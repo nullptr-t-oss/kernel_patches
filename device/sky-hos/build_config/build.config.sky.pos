@@ -12,15 +12,15 @@ CONFIGS=(
 )
 
 LZ4_RAMDISK=1
-MKBOOTIMG_RAMDISK_CPIO="${KERNEL_PATCHES}/prebuilts/sky-hos/boot/ramdisk.cpio"
+BOOT_RAMDISK_CPIO="${KERNEL_PATCHES}/prebuilts/sky-hos/boot/ramdisk.cpio"
 
-. ${KERNEL_PATCHES}/build_config/build.config.utils
+. ${KERNEL_PATCHES}/device/generic/build_config/build.config.utils
 
 
 set_mkbootimg_args() {
-  ${RAMDISK_COMPRESS} "${MKBOOTIMG_RAMDISK_CPIO}" >"${OUT}/ramdisk.${RAMDISK_EXT}"
+  ${RAMDISK_COMPRESS} "${BOOT_RAMDISK_CPIO}" >"${OUT}/ramdisk.${RAMDISK_EXT}"
 
-  MKBOOTIMG_ARGS=(
+  BOOT_MKBOOTIMG_ARGS=(
     "--header_version" "4"
     "--os_version" "16.0.0"
     "--os_patch_level" "2099-12-01"
@@ -31,4 +31,4 @@ set_mkbootimg_args() {
   )
 }
 
-PRE_MKBOOTIMG_CMDS="set_mkbootimg_args"
+PRE_BOOT_MKBOOTIMG_CMDS="set_mkbootimg_args"
