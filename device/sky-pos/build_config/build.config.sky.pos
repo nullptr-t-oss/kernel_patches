@@ -12,7 +12,7 @@ CONFIGS=(
 )
 
 LZ4_RAMDISK=1
-BOOT_RAMDISK_CPIO="${KERNEL_PATCHES}/prebuilts/sky-hos/boot/ramdisk.cpio"
+BOOT_RAMDISK_CPIO="${KERNEL_PATCHES}/device/sky-pos/boot/ramdisk.cpio"
 
 . ${KERNEL_PATCHES}/device/generic/build_config/build.config.utils
 

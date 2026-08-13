@@ -1,0 +1,28 @@
+
+# {KERNEL_PATCHES} holds the absolute path to the root of this repo during build
+# {ROOT_DIR}   holds the absolute path of kernel_platform
+# {KERNEL_DIR} holds the kernel directory to be used at the time of including this config
+#              This dir is relative to {ROOT_DIR}
+# ${IMAGE} holds the absolute path to the kernel
+
+LZ4_RAMDISK=1
+BOOT_RAMDISK_CPIO="${KERNEL_PATCHES}/device/sky-hos/boot/ramdisk.cpio"
+
+. ${KERNEL_PATCHES}/device/generic/build_config/build.config.utils
+
+
+set_mkbootimg_args() {
+  ${RAMDISK_COMPRESS} "${BOOT_RAMDISK_CPIO}" >"${OUT}/ramdisk.${RAMDISK_EXT}"
+
+  BOOT_MKBOOTIMG_ARGS=(
+    "--header_version" "4"
+    "--os_version" "12.0.0"
+    "--os_patch_level" "2099-12-01"
+    "--pagesize" "4096"
+    "--kernel" "${IMAGE}"
+    "--ramdisk" "${OUT}/ramdisk.${RAMDISK_EXT}"
+    "--output" "${OUT}/boot.img"
+  )
+}
+
+PRE_BOOT_MKBOOTIMG_CMDS="set_mkbootimg_args"
