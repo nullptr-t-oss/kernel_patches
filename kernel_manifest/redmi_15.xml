@@ -3,10 +3,14 @@
   <remote fetch="https://git.codelinaro.org/clo/la" name="clo-la"/>
   <remote fetch="https://android.googlesource.com/" name="aosp"/>
   <remote fetch="https://github.com/nullptr-t-oss" name="nullptr_t"/>
+  <remote fetch="https://github.com/MiCode" name="ximi"/>
   <default remote="clo-la" revision="dummy_revision" sync-c="true" sync-tags="false"/>
   <project remote="nullptr_t" name="kernel_xiaomi_spring" path="kernel_platform/common" revision="spring">
     <linkfile dest=".source_date_epoch_dir" src="."/>
     <linkfile dest="kernel_platform/msm-kernel" src="."/>
+  </project>
+  <project remote="ximi" name="kernel_devicetree" path="kernel_platform/qcom/proprietary" revision="spring-v-oss">
+    <linkfile dest="kernel_platform/common/arch/arm64/boot/dts/vendor" src="."/>
   </project>
   <project remote="clo-la" name="kernel/prebuilts/build-tools" path="kernel_platform/prebuilts/kernel-build-tools" revision="a27755ba41db8a1487c7d2ac7d0da22ec5e593c7" upstream="refs/heads/ks-kernel.lnx.2.0.r1-rel"/>
   <project remote="clo-la" name="kernel_platform/build/bazel_common_rules" path="kernel_platform/build/bazel_common_rules" revision="2158c0cec82374e92e9599e3a8fd9ec5c10ba7ad" upstream="refs/heads/ks-kernel.lnx.2.0.r1-rel"/>
