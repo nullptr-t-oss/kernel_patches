@@ -1,0 +1,21 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.vendor_dlkm.brand=Redmi
+ro.product.vendor_dlkm.device=spring
+ro.product.vendor_dlkm.manufacturer=Xiaomi
+ro.product.vendor_dlkm.model=25057RN09G
+ro.product.vendor_dlkm.name=spring
+ro.vendor_dlkm.build.date=Wed Jul 15 10:07:56 UTC 2026
+ro.vendor_dlkm.build.date.utc=1784110076
+ro.vendor_dlkm.build.fingerprint=google/mustang_beta/mustang:CANARY/ZP11.260618.005/15760424:user/release-keys
+ro.vendor_dlkm.build.id=BP4A.251205.006
+ro.vendor_dlkm.build.tags=test-keys
+ro.vendor_dlkm.build.type=userdebug
+ro.vendor_dlkm.build.version.incremental=1784110076
+ro.vendor_dlkm.build.version.release=16
+ro.vendor_dlkm.build.version.release_or_codename=16
+ro.vendor_dlkm.build.version.sdk=36
+ro.vendor_dlkm.build.version.sdk_full=36.1
+# end of file
