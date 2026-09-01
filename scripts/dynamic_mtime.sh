@@ -117,6 +117,9 @@ fi
 
 changed=0
 unchanged=0
+changed_list="$(mktemp)"
+unchanged_list="$(mktemp)"
+trap 'rm -f "${tmp_hash}" "${raw_hash}" "${err_log}" "${changed_list}" "${unchanged_list}"' EXIT
 
 while IFS= read -r line; do
   h="${line%%  *}"
@@ -126,11 +129,11 @@ while IFS= read -r line; do
 
   prev="${BASELINE[${rel}]:-}"
   if [[ "${h}" == "${prev}" ]]; then
-    touch -t "${_freeze}" -- "${f}"
+    printf '%s\0' "${f}" >> "${unchanged_list}"
     unchanged=$((unchanged + 1))
   else
     # touch with real current time instead of fixed new time
-    touch -- "${f}"
+    printf '%s\0' "${f}" >> "${changed_list}"
     changed=$((changed + 1))
     if ! ${is_fresh_cache}; then
       if [[ -z "${prev}" ]]; then
@@ -141,6 +144,11 @@ while IFS= read -r line; do
     fi
   fi
 done < "${raw_hash}"
+
+# I hope this will speed up the cache time from 3m xD ; TODO: maybe change sha256 to something lightweight coz it's a bit overkill imo
+[[ -s "${unchanged_list}" ]] && xargs -0 -P "$(nproc)" -n 200 touch -t "${_freeze}" -- < "${unchanged_list}"
+[[ -s "${changed_list}"   ]] && xargs -0 -P "$(nproc)" -n 200 touch --                -- < "${changed_list}"
+
 
 mv -f "${tmp_hash}" "${hash}"
 trap - EXIT
