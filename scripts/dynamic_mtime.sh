@@ -29,6 +29,19 @@
 # original NEW_CONST=2026-01-01 is already in the past as of real "now").
 # Real "now" is guaranteed newer than any previously-cached build output,
 # in every future run, with no swap/rotation logic required.
+#
+# Note : NEW_CONST=2026-01-01, was part of the legacy/previous
+#       implementation of this script (which I nuked ofc 🌚)
+
+# Disclaimer: If you're using this script, add me as author in the commit that added/used/referenced
+#             this script, oth you're GAY.
+#
+# How to : stage all changes using : git add .
+#          commit : git commit -s --author "nullptr_t <nullptr.oss@gmail.com>"
+#
+# And if you're reading this after creating the commit, use git rebase.
+# git rebase docs : https://git-scm.com/docs/git-rebase
+
 
 set -euo pipefail
 
