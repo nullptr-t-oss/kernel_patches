@@ -1,4 +1,3 @@
-# Updated repo : [Click Here](https://github.com/EmberHeart-Kernels/kernel_patches)
+# This repo is deprecated! Please migrate to [kernel_kit](https://github.com/nullptr-t-oss/kernel_kit) repo
 
-
-# kernel_patches
+### This repo is created to avoid breaking compatibility with existing CI users!
